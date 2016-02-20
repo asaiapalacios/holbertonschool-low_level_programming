@@ -1,3 +1,4 @@
+/* Write a function that prints (on one line) all possible combinations of two different digits */
 #include <unistd.h>
 
 int main(void)
