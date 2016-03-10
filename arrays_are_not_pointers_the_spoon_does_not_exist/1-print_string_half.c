@@ -1,5 +1,6 @@
 #include "my_functions.h"
 void print_string_half(char *str)
+/* Write a function that prints half of a string. Prototype: void print_string_half(char *str); The function should print the second half of the string. If the number of characters is odd, the function should print the (length_of_the_string - 1) / 2 last characters */  
 
 { 
   int i = 0; /* initialize length of string */

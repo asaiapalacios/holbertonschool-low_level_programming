@@ -7,7 +7,7 @@ void print_string_2(char *str)
 
   for (c = 0; str[c]!='\0'; c++) { /* str[c] is the same as *(str + c) */
     if (c % 2 == 0) { /* c % 2 computes the remainder when c is divided by 2 */
-      print_char(*(str + c));}
+      print_char(*(str + c));} /* *(str + c) same as str[c] */
   }
   
   /* trial one output experiment: str: 0 2 4 6 8
