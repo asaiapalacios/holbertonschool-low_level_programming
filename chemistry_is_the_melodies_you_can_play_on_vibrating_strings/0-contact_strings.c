@@ -4,10 +4,10 @@ char *concat_strings(char *dest, const char *src)
 {
   char i, j;
   
-  /* This loop stores the length of s1 in i. It counts the number of char in s1 */
+  /* This loop stores the length of dest in i. It counts the number of char in dest */
   for(i=0; dest[i]!='\0'; i++);
 
-  /* This loop concatenates string s2 at the end of s1 */
+  /* This loop concatenates string src at the end of dest */
   for(j=0; src[j]!='\0'; i++, j++)
     {
       dest[i] = src[j];
