@@ -1,5 +1,4 @@
 #include "my_functions.h"
-
 char *rot13(char *v){
 
   int i;
