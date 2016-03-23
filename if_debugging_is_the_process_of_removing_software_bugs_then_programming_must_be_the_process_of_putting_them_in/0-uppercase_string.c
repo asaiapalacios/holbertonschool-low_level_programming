@@ -1,15 +1,14 @@
+/* Write a function that changes all lowercase letters of a string to uppercase.
+   Prototype: char *uppercase_string(char *); */
 #include "my_functions.h"
 
-char *uppercase_string(char *b){
+char *uppercase_string(char *j) {
   int i;
-  int j;
   
-  for(i=0; b[i]!='\0'; i++){
-    if(b[i] >= 'a' && b[i] <= 'z'){
-      j = b[i] - 32;
-      print_char(j);
+  for(i=0; j[i]!='\0'; i++) { 
+    if(j[i] >= 'a' && j[i] <= 'z') {
+      j[i] = j[i] - 32; /* using ASCII table; p[i] value equals the respective capital letter after subtracting by 32 */
     }
-    else{}
   }
-  return(b);
+  return(j);
 }
