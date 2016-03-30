@@ -14,6 +14,6 @@ int power(int x, int y) {
     return x * y;
   }
   else {
-    return (x * power(x, y-1));
+    return (x * power(x, y-1)); /* Recursion to the power of y */
   }
 }
