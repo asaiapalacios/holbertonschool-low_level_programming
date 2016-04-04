@@ -1,5 +1,3 @@
-/* Write a program that prints all arguments it receives. All arguments should be printed, including the first one, One argument per line, ending by a new line */
-
 #include <stdio.h>
 
 int main(int ac, char **av)

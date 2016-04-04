@@ -1,6 +1,3 @@
-/* Write a program that prints the number of arguments you passed to it. Your program should print a number, followed by a new line
- */
-
 #include <stdio.h>
 
 int main(int ac, char **av)
