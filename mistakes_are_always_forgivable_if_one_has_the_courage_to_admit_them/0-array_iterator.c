@@ -1,12 +1,17 @@
-#include "my_functions.h"
-
-/* Function prototype */
-void array_iterator(int *array, int size, void (*action_func)(int));
-
-/* Function implementation */
-void array_iterator(void (*action_func)(int elem))
+void array_iterator(int *array, int size, void (*action_func)(int))
 {
-  *action_func(int elem);
+  int i;
+  for(i = 0; i < size; i++) {
+    (*action_func)(array[i]); /* function action (with printf elements-of-array statement) passed to &action which is passing this info to *action_func */
+    }
 }
+
+
+
+
+
+
+
+
 
 
