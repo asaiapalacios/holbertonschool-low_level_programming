@@ -2,21 +2,15 @@
 #include "my_functions.h"
 /* Write a function that returns a pointer to a newly allocated space in memory */
 char *string_dup(char *str) {
-  char *s;
+  char *s = NULL;
   int j;
-  int len_of_str;
-
-  len_of_str = 1;
-
-  while(*str[len_of_str-1] !='0') {
-    len_of_str++;
-  }
-  s = malloc(sizeof(*str) * len_of_str));
+ 
+  s = malloc(sizeof(*str));
 /* If string_dup fails, return NULL */
-  if(str = NULL) {
+  if(str == NULL) {
     return NULL;
  }
-  for(j=0; j < len_of_str; j++) {
+  for(j=0; str[j] !='\0'; j++) {
     s[j] = str[j];
  }
 return s;

@@ -18,7 +18,7 @@ char *string_concat(char *s1, char *s2) {
     return NULL;}
 
   for(k = 0; k < ((len1-1) + len2); k++) {
-    if(i < (len1-1)) {
+    if(k < (len1-1)) {
       s7[k] = s1[k];
     } else {
       s7[k] = s2[k-(len1-1)]; }
