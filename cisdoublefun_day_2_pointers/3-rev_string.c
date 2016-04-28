@@ -7,14 +7,14 @@ char *rev_string(char *str)
   int i;
   int j;
   int len;
-
+  /* Determine length of string */
   i = 0;
   len = 0;
   while(str[len] != '\0')
     {
       len++;
     }
-  /* Once you find the length of the string, subract 1 to set value of j to the last item of the string and not '\O' */
+  /* Subract 1 to set value of j to the last item of the string and not '\O' */
   j = len-1;
 
   /* Reverse string */
