@@ -7,7 +7,7 @@ int string_to_integer(char *s)
   int num;
 
   num = 0;
-  /* Calculate the length of the string looping through the string */
+  /* Set up loop through the string */
   i = 0;
   
   while(s[i] != '\0')
