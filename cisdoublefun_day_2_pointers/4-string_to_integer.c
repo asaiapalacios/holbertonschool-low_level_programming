@@ -1,3 +1,4 @@
+/* Write a function that returns the first number contained in a string */
 #include "my_functions.h"
 
 int string_to_integer(char *s)
@@ -42,5 +43,5 @@ int string_to_integer(char *s)
     {
       num = 0;
     }
-  return((int)num);
+  return((int)num); /* Number is converted to an int and returned as an int */
 }
