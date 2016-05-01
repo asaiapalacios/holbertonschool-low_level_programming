@@ -33,5 +33,3 @@ int square_root(int n)
     }
   return num;
 }
-
-
