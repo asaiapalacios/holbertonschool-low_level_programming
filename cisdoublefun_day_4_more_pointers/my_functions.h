@@ -13,3 +13,4 @@ int string_digit(char *s);
 int string_lower(char *s);
 int string_upper(char *s);
 int string_printable(char *s);
+int is_prime_number(int n, int i);
