@@ -10,13 +10,13 @@ int string_alpha(char *s)
     {
       i++;
       return (1); /* Signals true */
-    }
-  else if
-    {
-      return (0); /* Signals false */
-    }
-  else(s[i] == '\0') /* If string is empty, return 1 */
+    } 
+  if(s[i] == '\0') /* If string is empty, return 1 */
     {
       return (1); /* Signals true (empty) */
+    }
+  else
+    {
+      return (0); /* Signals false */
     }
 }

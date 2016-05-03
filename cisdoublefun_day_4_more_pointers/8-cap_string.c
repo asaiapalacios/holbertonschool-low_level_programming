@@ -1,7 +1,7 @@
 /* Function that capitalizes all words of a string */
 #include "my_functions.h"
 
-char *cap_string(char *)
+char *cap_string(char *j)
 {
   int i;
   
@@ -13,9 +13,9 @@ char *cap_string(char *)
 	if(j[i+1] >= 'a' && j[i+1] <= 'z') 
 	  { /* +1 = Capitalize 1st character of a word in the string after ' ', \t, and \n */ 
 	    j[i+1] = j[i+1] - 32; 
-	    i++;
 	  }
       }
+    i++;
     }
   return (j);
 }

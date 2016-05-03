@@ -1,7 +1,7 @@
 /* Function that changes all lowercase letters of a string to uppercase */
 #include "my_functions.h"
 
-char *uppercase_string(char *)
+char *uppercase_string(char *j)
 {
   int i;
   
@@ -11,8 +11,8 @@ char *uppercase_string(char *)
     if(j[i] >= 'a' && j[i] <= 'z') 
       {
 	j[i] = j[i] - 32; /* j[i] value equal to uppercase character in ASCII table after subtracting by 32 */
-	i++;
       }
+    i++;
     }
   return(j);
 }
