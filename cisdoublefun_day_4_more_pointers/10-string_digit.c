@@ -11,7 +11,7 @@ int string_digit(char *s)
       i++;
       return (1); /* True */
     }
-  if
+  else if
     {
       return (0); /* False */
     }
