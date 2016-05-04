@@ -1,4 +1,4 @@
-/A* Function that compares two strings like strcmp */
+/* Function that compares two strings like strcmp */
 #include "my_functions.h"
 /* Function that compares two strings */
 int strings_compare(char *s1, const char *s2)
