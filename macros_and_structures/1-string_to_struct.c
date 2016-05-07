@@ -1,36 +1,38 @@
+/* Store string and its length in newly allocated structure; return address of this structure */
 #include <stdlib.h>
 #include "str_struct.h"
-/* Store string and its length in newly allocated structure; return address of this structure */
-char *string_dup(char *str) {
+#include "my_functions.h"
+/* Function to duplicate string */
+char *string_dup(char *str) 
+{
   char *s;
-  int j;
-  int len_of_str;
+  int j, len_of_str;
 
   len_of_str = 1;
-  while(str[len_of_str-1] !='0') {
-    len_of_str++;
+  while(str[len_of_str-1] !='0') { 
+      len_of_str++;
   }
   s = malloc(sizeof(*str) * len_of_str);
 /* If string_dup fails, return NULL */
-if(str == NULL) {
+if(str == NULL) 
   return NULL;
- }
-for(j=0; j < len_of_str; j++) {
-  s[j] = str[j];
+ for(j=0; j < len_of_str; j++) {
+    s[j] = str[j];
  }
  return (s);
 }
-
-int str_len(char *str){
+/* Function to obtain length of string */
+int str_len(char *str)
+{
   int len;
-  len = 0;
-  while(str[len] != '\0'){
-      len++;
+  for(len = 0; str[len] != '\0'; len++)
+    {
     }
   return(len);
 }
-
-struct String *string_to_struct(char *str){
+/* Store string and its length in newly allocated structure; return address of this structure */
+struct String *string_to_struct(char *str)
+{
   struct String *string;
   int length;
   char *dup_str;

@@ -1,5 +1,4 @@
 #include <stdlib.h>
-
 /* Write a function that returns a pointer to a newly allocated space in memory */
 char *string_dup(char *str) {
   char *s;
