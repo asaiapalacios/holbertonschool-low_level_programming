@@ -18,8 +18,8 @@ int add_node(List **list, char *content)
   /* Copy content given as a parameter into a newly allocated space in memory */
   string_len = stringlen(content);
   copy_of_str = malloc(sizeof(char) * string_len);
-  if(copy_of_str == NULL)
-    return NULL;
+  /* if(copy_of_str == NULL)
+     return NULL; */
   copy_of_str = strcopy(copy_of_str, content);
   /* Initialize all the data of the new node */
   node->str = copy_of_str;
@@ -35,7 +35,7 @@ char *strcopy(char *dest, char *src)
 {
   int i;
   
-  for(i = 0; src[[i] != '\0'; i++)
+  for(i = 0; src[i] != '\0'; i++)
     {
       dest[i] = src[i];
     }
