@@ -1,10 +1,8 @@
 #include "list.h"
 #include <stdlib.h>
-#include "my_functions.h"
 
 int stringlen(char *str);
 char *strcopy(char *dest, char *src);
-List *find_last_node(List **list);
 
 /* Function adds a node to the list */
 int add_node(List **list, char *content)
@@ -21,7 +19,7 @@ int add_node(List **list, char *content)
     return (1);
   /* Copy content given as a parameter into a newly allocated space in memory */
   string_len = stringlen(content);
-  copy_of_str = malloc(sizeof(char) * string_len);
+  copy_of_str = malloc(sizeof(char) * string_len); /* Allocate enough memory to store copy */
   /* COMMENTED OUT
      if(copy_of_str == NULL)                                         
      return NULL; 
@@ -33,23 +31,33 @@ int add_node(List **list, char *content)
      stored string (&copy_of_str)
   */
   node->str = copy_of_str;
-  
-  /* Make the 1st node (list is pnting to 1st node) 'next' ptr point 
-     to the first element of 2nd node (by accessing its addr).
-     Need if statement to ensure 1st node points to addr of 2nd node 
+  /* Make ptr 'next' of node point to NULL,                                        
+     so the node will now be the last node of our list 
+  */
+  node->next = NULL;
+  /* Make the 1st node (list) 'next' ptr point to the first element of 
+     2nd node (by accessing its addr).
+     If statement: assigns node location to *list if it is the first node 
+     added to the list
   */ 
   if(*list == NULL)
     {
       *list = node;
     }
-    /* ELSE, find last node and designate the new node to follow */
-    last = find_last_node(list);
-    last->next = node;
+    /* Find the last node and designate the new node to follow.
+    find_last_node takes the pointer to the front of the list;
+    continues to next pointer in each node in the list until reaching 
+    a NULL pointer. 
+    */
+  else 
+    {
+      last = *list; /* Last pointer points to the front/beginning of the list */
+      while(last->next != NULL)
+	{
+	  last = last->next; /* We want last->next to point to nothing (NULL) */
+	}
+      last->next = node;
     }
-  /* Make ptr 'next' of 2nd node point to NULL, 
-     so the 2nd node will now be the last node of our list
-  */
-  node->next = NULL;
   return(0);
 }
 
@@ -71,20 +79,4 @@ int stringlen(char *str)
   int i;
   for(i = 0; str[i] != '\0'; i++) {}
   return (i);
-}
-
-/* find_last_node takes the pointer to the front of the list;
-continues to next pointer in each node in the list until reaching 
-a NULL pointer. 
-*/
-List *find_last_node(List **list)
-{
-  List *node;
-
-  node = *list; /* Node pointer points to the front/beginning of the list */
-  while(node->next != NULL) 
-    {
-      node = node->next; /* We want node->next to point to nothing (NULL) */
-    }
-  return node; /* Return pointer to the current last node pointer in the list */
 }
