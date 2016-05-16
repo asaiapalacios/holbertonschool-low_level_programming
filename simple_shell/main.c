@@ -12,17 +12,16 @@ int main(int ac, char **av, char **env)
 #include <sys/types.h>
 #include <sys/wait.h>
 
-char *read_line(const int fd);
-char **string_split(const char *str, char separator);
+char *read_line(const int fd); /* can delete b/c prototype in libshell.h */
+char **string_split(const char *str, char separator); /* can delete b/c "" */
 
 int print_char(char c) {
   return (write(1, &c, 1));
 }
 
-
 int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char **env) {
   char *command_line; /* points to a malloced array */
-  char **command_args; 
+  char **command_args;
   pid_t pid;
   char *exec_argv[] = {"/bin/ls", "-l", NULL};
   int status;
@@ -38,10 +37,11 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
       * CALL A FUNCTION TO SPLIT THE LINE INTO ARGUMENTS: returns a pointer to an array of strings; stores pointer in variable command_args
       */
     command_args = string_split(command_line, ' '); /* Splits string from stdin into arguments
-    /* EXECUTE THE ARGUMENTS (i.e. launch a program) 
+    /* EXECUTE THE ARGUMENTS (i.e. launch a program)
      * we need to fork to create a child process
      * that will execute non-built-in programs w/in our program using execve() function
      */
+    status = execute(args);
     if (/*is_a_built-in_command*/) {
       /* execute built-in command */
     }
