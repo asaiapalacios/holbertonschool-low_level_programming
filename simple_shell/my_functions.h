@@ -11,4 +11,5 @@ int print_char(char);
 void print_string(char *str);
 char *string_concat(char *dest, const char *src);
 int str_ncomp(char *s1, char *s2, int c);
-int string_to_integer(char *s);
+void set_return(int *ret_value, char *s);
+void set_return(int *ret_value, char *s);
