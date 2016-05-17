@@ -1,84 +1,85 @@
 /*
- * BUILD YOUR OWN SHELL INTERPRETER
+ * This program is a UNIX command line interpreter
+ * Created by:
+ * Asaia Palacios & Siphan Bou
+ * Date:
+ * May 11, 2016
  */
 #include <unistd.h>
 #include "libshell.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "my_functions.h"
-#include <stdio.h>
+#include <string.h>
 
-int main (__attribute__((unused)) int ac, __attribute__((unused)) char **av, char **env) {
-  char *command_line; /* points to a malloced array */
-  char **command_args;
-  pid_t pid;
-  int status;
-  char *print_env;
-  int i;
-  int j;
-  char *path;
+int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char **env) /* char **env inherits all the environment variables when it gets executed */
+{
+char *input; /* Points to a malloced array */
+char **args; /* Stores array of strings returned by string_split */
+pid_t pid;
+int status;
+int i;
+int j;
+char *print_env;
+char *path;
+/* int *ret_child; */
+int return_value;
 
-  do { /* PRINT A PROMPT at least once */
-    print_char ('>');
-    print_char (' ');
-    /*
-     * CALL A FUNCTION TO READ A LINE:
-     * store return addr of stdin of read_line in variable command_line
-     */
-    command_line = read_line (0);
-     /*
-      * CALL A FUNCTION TO SPLIT THE LINE INTO ARGUMENTS:
-      * returns a pointer to an array of strings; stores pointer in variable command_args
-      */
-    command_args = string_split (command_line, ' '); /* Splits string from stdin into arguments */
-    /* EXECUTE THE ARGUMENTS (i.e. launch a program)
-     * we need to fork to create a child process
-     * that will execute non-built-in programs w/in our program using execve() function
-     */
+	return_value = 0;
 
-if (string_compare(command_line, "env") == 0) {
-  for (i = 0; env[i] != '\0'; i++) {
-    print_env = env[i]; /* store arrays in print_env */
-    print_char ('\n');
-      for (j = 0; env[j]; j++) {
-        print_char (print_env[j]); /* print each character (string) of each array */
+do { /* Prints promt at least once */
+  write(1, "C-shell> ", 9);
+  input = read_line(0); /* Reads stdin and stores output which is a malloced array */
+  args = string_split(input, ' '); /* Splits string from stdin into arguments to be interpreted */
+
+  if (string_compare(input, "env") == 0) { /* If input command is "env", prints the env without creating a child process */
+    for (i = 0; env[i] != '\0'; i++) { /* Loops through each array of strings stored in env ie all environment variables */
+    print_env = env[i];
+      for (j = 0; print_env[j] != '\0'; j++) { /* Loops through each string ie each environment variable */
+        print_char(print_env[j]);
+      }
+      print_char('\n');
     }
   }
-  print_char ('\n');
-}
-
-if(string_compare(command_args[0], "exit") {
-  if(command_args[1] == NULL) {
+  else if (string_compare(args[0], "exit") == 0) { /* If input command is "exit", exits C-shell without creating a child process */
+    set_return(&return_value, args[1]);
+    printf("%s\n", "exit loop entered");
+    free(args);
     return (0);
-  } else {
-    return_value = string_to_integer(command_args[1]);
-  }
-  free(command_args);
-  exit(0);
-}
-
-    if ((pid = fork()) == -1) { /* handles error from forking */
-      perror ("fork");
-      return (1);
-    }
-    if (pid == 0) { /* child process starts execution; fork() returns value 0 to child process */
-      path = get_path(env, command_args[0]); /* Stores path to executable returned by get_path */
-        if (path == NULL) {
-          write(1, "Command not found", 17);
-          print_char('\n');
+      }
+  else if (string_compare(input, "$?") == 0) { /* If input command is "$?", return the status of the child process */
+    print_number(status);
+    print_char('\n');
+      }
+/*
+ * We need to fork to create a child process
+ * that will execute non-built-in programs within our program
+ * using the execve() function which executes a process
+ * in an environment which it assigns
+ */
+    else {
+        if ((pid = fork()) == -1) { /* Handles error from forking */
+          perror("fork");
           return (1);
         }
-      execve(path, command_args, env);
-    }
-    else { /* fork() returns PID of created child to parent process; when child terminates, parent process continues its execution */
-      wait(&status); /* waits for child to terminate before displaying prompt & read_line again */
-     /*
-      * FREE LINE (malloced array) AND ARGUMENTS
-      */
-      free(command_line);
-      free(command_args);
-    }
-  } while (1);
-return(0);
+        if (pid == 0) { /* Handles child process */
+          path = get_path(env, args[0]); /* Stores path to executable returned by get_path */
+            if (path == NULL) { /* If no path was found for input command */
+              write(1, "Command not found", 17);
+              print_char('\n');
+              return (1);
+            }
+          execve(path, args, env); /* Executes the program that was typed as input with all its arguments */
+        }
+        else { /* Handles parent process */
+          wait(&status);/* Waits for child to terminate before displaying prompt and read_line again */
+          free(input);
+          free(args);
+          /* ret_child = &status; */
+        }
+      }
+    } while (1); /* Whenever a built-in program or child process is executed, prompt is printed again */
+return (0);
 }
