@@ -1,8 +1,14 @@
-int execute(char **args);
-int builtin_num();
-int string_compare(char *s1, const char **s2);
-char *builtin_string[] = {"env", "exit"}; /* Not sure to include in this file? */
-int (*builtin_function[]) (char **) = {&env, &exit}; /* Include in this file? */
-int env(char **args); /* Include in this file? */
-int exit(char **args); /* Include in this file? */
-int launch(char **args);
+int str_len(char *s);
+void free_command(char **command);
+void exit_shell(char **command);
+int len_command(char **command);
+int string_compare(char *s1, const char *s2);
+int string_to_integer(char *s);
+int find_ex(char *s);
+char *get_path(char **env, char *cmd);
+void print_number(int);
+int print_char(char);
+void print_string(char *str);
+char *string_concat(char *dest, const char *src);
+int str_ncomp(char *s1, char *s2, int c);
+int string_to_integer(char *s);

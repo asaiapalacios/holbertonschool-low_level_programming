@@ -1,0 +1,15 @@
+#include "my_functions.h"
+#include "libshell.h"
+#include <sys/stat.h>
+/*
+ * CHECK IF PROGRAM EXISTS
+ */
+int find_ex(char *s) {
+  struct stat file_ex;
+
+  if (lstat(s, &file_ex) == -1) {
+    return (0);
+  } else {
+    return (1);
+  }
+}
