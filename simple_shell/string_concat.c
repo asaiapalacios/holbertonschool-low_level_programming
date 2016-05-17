@@ -1,3 +1,5 @@
+#include "my_functions.h"
+ /* Function that concatenates a string and returns "string" + "string" */
 char *string_concat(char *dest, const char *src) {
   int i;
   int j;

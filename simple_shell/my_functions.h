@@ -1,14 +1,9 @@
-int str_len(char *s);
-void free_command(char **command);
-void exit_shell(char **command);
-int len_command(char **command);
 int string_compare(char *s1, const char *s2);
 int string_to_integer(char *s);
 int find_ex(char *s);
 char *get_path(char **env, char *cmd);
 void print_number(int);
 int print_char(char);
-void print_string(char *str);
 char *string_concat(char *dest, const char *src);
 int str_ncomp(char *s1, char *s2, int c);
-void set_return(int *ret_value, char *s);
+int str_len(char *s);

@@ -1,3 +1,4 @@
+/* This function checks if a program exists for an input command */
 #include "my_functions.h"
 #include "libshell.h"
 #include <sys/stat.h>

@@ -1,5 +1,7 @@
 #include "my_functions.h"
 
+int str_len(char *s);
+
 int str_ncomp(char *s1, char *s2, int c)
 {
   int i,first,second,t,n;

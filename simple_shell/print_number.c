@@ -1,4 +1,5 @@
 #include "my_functions.h"
+
 void print_number(int n)
 {
   int v,t,d,i,u;

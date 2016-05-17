@@ -1,6 +1,8 @@
 /*
- * FIND LENGTH OF STRING 
+ * FIND LENGTH OF STRING
  */
+#include "my_functions.h"
+
 int str_len(char *s) {
   int len;
 

@@ -1,6 +1,8 @@
 /*
- * COMPARE STRINGS: works like strcmp
+ * COMPARE STRINGS if two are identical: works like strcmp
  */
+#include "my_functions.h"
+
 int string_compare(char *s1, const char *s2) {
   int i;
 
