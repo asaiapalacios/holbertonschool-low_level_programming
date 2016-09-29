@@ -10,7 +10,7 @@ int add_node(List **list, char *content)
   char *copy_of_str;
   int string_len;
   /* Declaring new ptr to List; ptr will hold addr of our new node */
-  List *node; 
+  List *node;
   /* Allocate enough space in memory to hold new node */
   node = malloc(sizeof(List));
   if(node == NULL) /* If malloc function fails, raise an error */
@@ -34,7 +34,7 @@ int add_node(List **list, char *content)
 char *strcopy(char *dest, char *src)
 {
   int i;
-  
+
   for(i = 0; src[i] != '\0'; i++)
     {
       dest[i] = src[i];
